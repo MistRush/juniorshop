@@ -4,176 +4,349 @@
  */
 
 // ========================================
-// PRODUCT DATA
+// PRODUCT DATA - Real products from junior.cz
 // ========================================
 const products = [
+  // HRAČKY (Toys)
   {
     id: 1,
-    name: "Dřevěný vláček s vagónky",
+    name: "Stavebnice MERKUR – Formule 1",
     category: "hracky",
-    subcategory: "drevene",
-    price: 599,
+    subcategory: "stavebnice",
+    price: 899,
     originalPrice: null,
-    image: "🚂",
-    description: "Krásný dřevěný vláček s barevnými vagónky je ideální hračka pro malé strojvůdce. Vyroben z kvalitního dřeva, bezpečné barvy, vhodné pro děti od 3 let.",
-    age: "3-6",
-    gender: "unisex",
+    image: "https://www.junior.cz/files/images/product/350/formule-Qb8m.jpeg",
+    description: "Klasická kovová stavebnice MERKUR pro malé konstruktéry. Sestavte si vlastní Formuli 1!",
+    age: "6-9",
+    gender: "boy",
     stock: 15,
     badge: null
   },
   {
     id: 2,
-    name: "Kreativní sada pro malování",
-    category: "tvoreni",
-    subcategory: "malovani",
-    price: 349,
-    originalPrice: 449,
-    image: "🎨",
-    description: "Kompletní sada pro malé umělce. Obsahuje barvy, štětce a plátna. Rozvíjí kreativitu a jemnou motoriku.",
-    age: "6-9",
+    name: "Stavebnice Mozaika Mravenec Stavitel",
+    category: "hracky",
+    subcategory: "stavebnice",
+    price: 719,
+    originalPrice: null,
+    image: "https://www.junior.cz/files/images/product/350/stavebnice-mozaika-mravenec-stavitel-zzvM.jpg",
+    description: "Kreativní mozaiková stavebnice pro rozvoj jemné motoriky a prostorové představivosti.",
+    age: "3-6",
     gender: "unisex",
     stock: 23,
-    badge: "sale"
-  },
-  {
-    id: 3,
-    name: "Interaktivní kniha - Zvířátka",
-    category: "knihy",
-    subcategory: "interaktivni",
-    price: 289,
-    originalPrice: null,
-    image: "📖",
-    description: "Interaktivní kniha se zvuky zvířat. Stiskni obrázek a uslyšíš, jak zvířátko mluví!",
-    age: "0-3",
-    gender: "unisex",
-    stock: 8,
     badge: "new"
   },
   {
-    id: 4,
-    name: "Plyšový medvídek Teddy",
+    id: 3,
+    name: "Vilac - Dřevěné magnetky farma 20 ks",
     category: "hracky",
-    subcategory: "plysove",
-    price: 459,
+    subcategory: "drevene",
+    price: 348,
     originalPrice: null,
-    image: "🧸",
-    description: "Měkoučký plyšový medvídek, ideální kamarád na spaní. Hypoalergenní materiály.",
-    age: "0-3",
+    image: "https://www.junior.cz/files/images/product/350/vilac---drevene-magnetky-farma-20-ks-DKQJ.jpg",
+    description: "Sada 20 dřevěných magnetek s motivy farmy. Ideální na lednici nebo magnetickou tabuli.",
+    age: "3-6",
     gender: "unisex",
     stock: 34,
     badge: null
   },
   {
-    id: 5,
-    name: "Stavebnice LEGO City",
+    id: 4,
+    name: "LEGO® Minecraft® 21269 Výprava do dolu",
     category: "hracky",
     subcategory: "stavebnice",
-    price: 1299,
-    originalPrice: 1499,
-    image: "🏗️",
-    description: "Stavebnice města s auty, budovami a figurkami. 450 dílků pro hodiny zábavy.",
+    price: 715,
+    originalPrice: null,
+    image: "https://www.junior.cz/files/images/product/350/lego-minecraft21269-vyprava-do-dolu-a-pasovec-9E6o.jpg",
+    description: "LEGO Minecraft set s pásovcem a důlním prostředím. Pro fanoušky oblíbené hry!",
     age: "6-9",
     gender: "boy",
     stock: 12,
-    badge: "sale"
+    badge: null
+  },
+  {
+    id: 5,
+    name: "LEGO® Speed Champions Ferrari SF-24 F1®",
+    category: "hracky",
+    subcategory: "stavebnice",
+    price: 649,
+    originalPrice: null,
+    image: "https://www.junior.cz/files/images/product/350/lego-speed-champions-77242-zavodni-auto-ferrari-sf-24-f1-h0kp.jpg",
+    description: "Závodní auto Ferrari SF-24 F1 z řady LEGO Speed Champions. Detailní model pro sběratele.",
+    age: "9-12",
+    gender: "boy",
+    stock: 8,
+    badge: "new"
   },
   {
     id: 6,
-    name: "Panenka s příslušenstvím",
+    name: "Látková panenka Lila ve fialové",
     category: "hracky",
     subcategory: "panenky",
-    price: 789,
+    price: 650,
     originalPrice: null,
-    image: "👧",
-    description: "Krásná panenka s šatníkem a doplňky. Včetně hřebenu a zrcátka.",
-    age: "3-6",
+    image: "https://www.junior.cz/files/images/product/350/latkova-panenka-daisy-ve-zlute-IokT.webp",
+    description: "Měkká látková panenka v krásných fialových šatech. Ideální kamarádka pro nejmenší.",
+    age: "0-3",
     gender: "girl",
     stock: 19,
     badge: null
   },
   {
     id: 7,
-    name: "Dřevěné puzzle - Dinosauři",
+    name: "Lilliputiens - velký plyšový dráček Joe",
     category: "hracky",
-    subcategory: "puzzle",
-    price: 199,
+    subcategory: "plysove",
+    price: 2217,
     originalPrice: null,
-    image: "🦕",
-    description: "Barevné dřevěné puzzle s dinosaury. 24 dílků, ideální pro začátečníky.",
-    age: "3-6",
+    image: "https://www.junior.cz/files/images/product/350/lilliputiens---velky-plysovy-dracek-joe-R1ZG.jpg",
+    description: "Velký plyšový dráček Joe od Lilliputiens. Prémiová kvalita, bezpečné materiály.",
+    age: "0-3",
     gender: "unisex",
-    stock: 45,
+    stock: 5,
     badge: null
   },
   {
     id: 8,
-    name: "Magnetická tabule",
-    category: "tvoreni",
-    subcategory: "tabule",
-    price: 549,
+    name: "Lilliputiens - muchláček dráček Joe",
+    category: "hracky",
+    subcategory: "plysove",
+    price: 560,
     originalPrice: null,
-    image: "📝",
-    description: "Oboustranná magnetická tabule - jedna strana na křídu, druhá na fixy.",
-    age: "3-6",
-    gender: "unisex",
-    stock: 7,
-    badge: "new"
-  },
-  {
-    id: 9,
-    name: "Noční lampička - Hvězdy",
-    category: "dekorace",
-    subcategory: "osvetleni",
-    price: 399,
-    originalPrice: null,
-    image: "🌟",
-    description: "Projektor hvězdné oblohy s uklidňujícími barvami. Pomáhá dětem usnout.",
+    image: "https://www.junior.cz/files/images/product/350/lilliputiens---muchlacek----dracek-joe-KMF0.jpg",
+    description: "Roztomilý muchláček ve tvaru draka. Měkký materiál vhodný pro kojence.",
     age: "0-3",
     gender: "unisex",
     stock: 28,
     badge: null
   },
   {
-    id: 10,
-    name: "Batoh do školky - Raketa",
-    category: "doplnky",
-    subcategory: "batohy",
-    price: 649,
-    originalPrice: 799,
-    image: "🎒",
-    description: "Ergonomický batoh s motivem rakety. Lehký a prostorný.",
-    age: "3-6",
-    gender: "boy",
-    stock: 16,
-    badge: "sale"
-  },
-  {
-    id: 11,
-    name: "Vánoční dekorace - Sob",
-    category: "sezonni",
-    subcategory: "vanoce",
-    price: 249,
+    id: 9,
+    name: "Lilliputiens - dráček Joe muzikant",
+    category: "hracky",
+    subcategory: "hudebni",
+    price: 871,
     originalPrice: null,
-    image: "🦌",
-    description: "Roztomilý plyšový sob jako vánoční dekorace. Výška 30 cm.",
+    image: "https://www.junior.cz/files/images/product/350/lilliputiens---dracek-joe-muzikant-LIEy.jpg",
+    description: "Hudební hračka dráček Joe. Stisknutím vydává příjemné zvuky.",
     age: "0-3",
     gender: "unisex",
-    stock: 52,
+    stock: 14,
+    badge: null
+  },
+
+  // KNIHY (Books)
+  {
+    id: 10,
+    name: "Stela - svítící vyšívání",
+    category: "knihy",
+    subcategory: "interaktivni",
+    price: 389,
+    originalPrice: null,
+    image: "https://www.junior.cz/files/images/product/350/stela---svitici-vysivani-OpOI.jpg",
+    description: "Kreativní kniha se svítícím vyšíváním. Spojení čtení a tvoření v jednom.",
+    age: "6-9",
+    gender: "girl",
+    stock: 21,
     badge: "new"
   },
   {
-    id: 12,
-    name: "Hudební xylofon",
-    category: "hracky",
-    subcategory: "hudebni",
-    price: 329,
+    id: 11,
+    name: "Jedééém!",
+    category: "knihy",
+    subcategory: "pohadky",
+    price: 749,
     originalPrice: null,
-    image: "🎵",
-    description: "Barevný dřevěný xylofon s 8 tóny. Rozvíjí hudební sluch a koordinaci.",
+    image: "https://www.junior.cz/files/images/product/350/jedeeem-gqdE.jpg",
+    description: "Zábavná dětská kniha plná dobrodružství a překvapení.",
+    age: "3-6",
+    gender: "unisex",
+    stock: 16,
+    badge: null
+  },
+  {
+    id: 12,
+    name: "Děti z Bullerbynu – výroční vydání",
+    category: "knihy",
+    subcategory: "pohadky",
+    price: 380,
+    originalPrice: null,
+    image: "https://www.junior.cz/files/images/product/350/deti-z-bullerbynu---vyrocni-vydani-58jT.jpg",
+    description: "Klasická kniha od Astrid Lindgren ve speciálním výročním vydání.",
+    age: "6-9",
+    gender: "unisex",
+    stock: 32,
+    badge: null
+  },
+  {
+    id: 13,
+    name: "Hmyzí pohádky z květinové zahrádky",
+    category: "knihy",
+    subcategory: "pohadky",
+    price: 259,
+    originalPrice: null,
+    image: "https://www.junior.cz/files/images/product/350/Cover_front-1717664212-q32o.jpg",
+    description: "Kouzelné pohádky o hmyzu a přírodě. Krásné ilustrace pro nejmenší čtenáře.",
+    age: "3-6",
+    gender: "unisex",
+    stock: 45,
+    badge: null
+  },
+  {
+    id: 14,
+    name: "Dětská kniha Frank a želvička",
+    category: "knihy",
+    subcategory: "pohadky",
+    price: 369,
+    originalPrice: null,
+    image: "https://www.junior.cz/files/images/product/350/frank-a-zelvicka-C0Op.jpg",
+    description: "Dojemný příběh o přátelství chlapce a želvy.",
+    age: "3-6",
+    gender: "unisex",
+    stock: 18,
+    badge: null
+  },
+  {
+    id: 15,
+    name: "Můj dům",
+    category: "knihy",
+    subcategory: "interaktivni",
+    price: 259,
+    originalPrice: null,
+    image: "https://www.junior.cz/files/images/product/350/muj-dum-gTaj.webp",
+    description: "Interaktivní kniha o domově a rodině. S okénky a klapkami.",
     age: "0-3",
     gender: "unisex",
-    stock: 21,
+    stock: 27,
     badge: null
+  },
+  {
+    id: 16,
+    name: "A-BÉ-CÉ-DÉ",
+    category: "knihy",
+    subcategory: "naucne",
+    price: 259,
+    originalPrice: null,
+    image: "https://www.junior.cz/files/images/product/350/a-be-ce-de-Todu.jpg",
+    description: "Zábavná abeceda pro nejmenší. Učení hrou s krásnými obrázky.",
+    age: "3-6",
+    gender: "unisex",
+    stock: 38,
+    badge: null
+  },
+  {
+    id: 17,
+    name: "O zzzvědavé včele Elle",
+    category: "knihy",
+    subcategory: "pohadky",
+    price: 849,
+    originalPrice: null,
+    image: "https://www.junior.cz/files/images/product/350/o-zzzvedave-vcele-elle-n4ar.jpg",
+    description: "Příběh o zvědavé včelce na cestě za poznáním. Vzdělávací i zábavná.",
+    age: "3-6",
+    gender: "unisex",
+    stock: 11,
+    badge: "new"
+  },
+
+  // TVOŘENÍ (Crafts)
+  {
+    id: 18,
+    name: "Artissimo - třpytkové pískování Jednorožci",
+    category: "tvoreni",
+    subcategory: "malovani",
+    price: 369,
+    originalPrice: null,
+    image: "https://www.junior.cz/files/images/product/350/artissimo---trpytkove-piskovani---jednorozci-hYXT.jpg",
+    description: "Kreativní sada pro pískování s třpytkami. Vytvořte si kouzelné jednorožce!",
+    age: "6-9",
+    gender: "girl",
+    stock: 24,
+    badge: null
+  },
+  {
+    id: 19,
+    name: "Sada malování pískem – Pohádky",
+    category: "tvoreni",
+    subcategory: "malovani",
+    price: 359,
+    originalPrice: null,
+    image: "https://www.junior.cz/files/images/product/350/sada-malovani-piskem--pohadky-Ah9P.jpg",
+    description: "Malování barevným pískem s pohádkovými motivy. Kompletní sada.",
+    age: "3-6",
+    gender: "unisex",
+    stock: 31,
+    badge: null
+  },
+  {
+    id: 20,
+    name: "Žlutý křeček jedlíček",
+    category: "tvoreni",
+    subcategory: "modelovani",
+    price: 250,
+    originalPrice: null,
+    image: "https://www.junior.cz/files/images/product/350/zluty-krecek-jedlicek-imrk.jpg",
+    description: "Kreativní sada pro výrobu vlastního křečka. Zábava pro celou rodinu.",
+    age: "6-9",
+    gender: "unisex",
+    stock: 17,
+    badge: null
+  },
+  {
+    id: 21,
+    name: "Interaktivní sada Alou do pelíšku!",
+    category: "tvoreni",
+    subcategory: "modelovani",
+    price: 320,
+    originalPrice: null,
+    image: "https://www.junior.cz/files/images/product/350/interaktivni-sada-alou-do-pelisku-js0k.jpg",
+    description: "Interaktivní tvořivá sada pro nejmenší. Propojení hry a učení.",
+    age: "0-3",
+    gender: "unisex",
+    stock: 22,
+    badge: null
+  },
+  {
+    id: 22,
+    name: "Interaktivní listy Malá velká ručička",
+    category: "tvoreni",
+    subcategory: "malovani",
+    price: 230,
+    originalPrice: null,
+    image: "https://www.junior.cz/files/images/product/350/interaktivni-listy-mala-velka-rucicka-weIX.jpg",
+    description: "Pracovní listy pro rozvoj kresby a jemné motoriky.",
+    age: "3-6",
+    gender: "unisex",
+    stock: 40,
+    badge: null
+  },
+  {
+    id: 23,
+    name: "Tvořivá sada Panenka s růžovými vlásky",
+    category: "tvoreni",
+    subcategory: "modelovani",
+    price: 1150,
+    originalPrice: null,
+    image: "https://www.junior.cz/files/images/product/350/latkova-panenka-s-ruzovymi-vlasky-lidske-telo-pfzB.jpg",
+    description: "Prémiová tvořivá sada pro výrobu vlastní látkové panenky.",
+    age: "9-12",
+    gender: "girl",
+    stock: 6,
+    badge: null
+  },
+  {
+    id: 24,
+    name: "Čmáropis",
+    category: "tvoreni",
+    subcategory: "malovani",
+    price: 199,
+    originalPrice: null,
+    image: "https://www.junior.cz/files/images/product/350/cmaropis-Wixh.jpg",
+    description: "Kreativní sešit pro volné čmárání a rozvoj fantazie.",
+    age: "3-6",
+    gender: "unisex",
+    stock: 55,
+    badge: "sale"
   }
 ];
 
@@ -398,7 +571,7 @@ function renderProductCard(product) {
     <div class="product-card" data-product-id="${product.id}">
       ${badgeHTML}
       <div class="product-image">
-        <div style="font-size: 5rem;">${product.image}</div>
+        <img src="${product.image}" alt="${product.name}" loading="lazy" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\\'font-size:4rem;display:flex;align-items:center;justify-content:center;height:100%\\'>🧸</div>'">
       </div>
       <div class="product-info">
         <span class="product-category">${categories[product.category]?.name || product.category}</span>
@@ -478,7 +651,7 @@ function renderProductPage(productId) {
   document.getElementById('productBreadcrumb').textContent = product.name;
 
   // Update main image
-  document.getElementById('mainImage').innerHTML = `<div style="font-size: 15rem; display: flex; align-items: center; justify-content: center; height: 100%;">${product.image}</div>`;
+  document.getElementById('mainImage').innerHTML = `<img src="${product.image}" alt="${product.name}" style="max-width: 100%; max-height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\\'font-size:10rem;display:flex;align-items:center;justify-content:center;height:100%\\'>🧸</div>'">`;
 
   // Update product info
   document.getElementById('productTitle').textContent = product.name;
@@ -542,7 +715,7 @@ function renderCartPage() {
   cartItemsList.innerHTML = cart.map(item => `
     <div class="cart-item" data-cart-item="${item.id}">
       <div class="cart-item-image">
-        <div style="font-size: 3rem; display: flex; align-items: center; justify-content: center; height: 100%;">${item.image}</div>
+        <img src="${item.image}" alt="${item.name}" style="width:100%; height:100%; object-fit:contain;" onerror="this.outerHTML='<div style=\\'font-size:2rem;display:flex;align-items:center;justify-content:center;height:100%\\'>🧸</div>'">
       </div>
       <div class="cart-item-info">
         <h4>${item.name}</h4>
@@ -586,7 +759,7 @@ function renderCheckoutPage() {
   orderItems.innerHTML = cart.map(item => `
     <div class="order-item">
       <div class="order-item-image">
-        <div style="font-size: 2rem; display: flex; align-items: center; justify-content: center; height: 100%;">${item.image}</div>
+        <img src="${item.image}" alt="${item.name}" style="width:100%; height:100%; object-fit:contain;" onerror="this.outerHTML='<div style=\\'font-size:1.5rem;display:flex;align-items:center;justify-content:center;height:100%\\'>🧸</div>'">
       </div>
       <div class="order-item-info">
         <h5>${item.name}</h5>

@@ -4,21 +4,25 @@
  */
 
 // ========================================
-// DEMO PRODUCTS DATA (same as main app)
+// PRODUCTS DATA - Real products from junior.cz
 // ========================================
 const products = [
-    { id: 1, name: "Dřevěný vláček s vagónky", category: "hracky", price: 599, image: "🚂", stock: 15 },
-    { id: 2, name: "Kreativní sada pro malování", category: "tvoreni", price: 349, image: "🎨", stock: 23 },
-    { id: 3, name: "Interaktivní kniha - Zvířátka", category: "knihy", price: 289, image: "📖", stock: 8 },
-    { id: 4, name: "Plyšový medvídek Teddy", category: "hracky", price: 459, image: "🧸", stock: 34 },
-    { id: 5, name: "Stavebnice LEGO City", category: "hracky", price: 1299, image: "🏗️", stock: 12 },
-    { id: 6, name: "Panenka s příslušenstvím", category: "hracky", price: 789, image: "👧", stock: 19 },
-    { id: 7, name: "Dřevěné puzzle - Dinosauři", category: "hracky", price: 199, image: "🦕", stock: 45 },
-    { id: 8, name: "Magnetická tabule", category: "tvoreni", price: 549, image: "📝", stock: 7 },
-    { id: 9, name: "Noční lampička - Hvězdy", category: "dekorace", price: 399, image: "🌟", stock: 28 },
-    { id: 10, name: "Batoh do školky - Raketa", category: "doplnky", price: 649, image: "🎒", stock: 16 },
-    { id: 11, name: "Vánoční dekorace - Sob", category: "sezonni", price: 249, image: "🦌", stock: 52 },
-    { id: 12, name: "Hudební xylofon", category: "hracky", price: 329, image: "🎵", stock: 21 }
+    { id: 1, name: "Stavebnice MERKUR – Formule 1", category: "hracky", price: 899, image: "https://www.junior.cz/files/images/product/350/formule-Qb8m.jpeg", stock: 15 },
+    { id: 2, name: "Stavebnice Mozaika Mravenec", category: "hracky", price: 719, image: "https://www.junior.cz/files/images/product/350/stavebnice-mozaika-mravenec-stavitel-zzvM.jpg", stock: 23 },
+    { id: 3, name: "Vilac - Dřevěné magnetky farma", category: "hracky", price: 348, image: "https://www.junior.cz/files/images/product/350/vilac---drevene-magnetky-farma-20-ks-DKQJ.jpg", stock: 34 },
+    { id: 4, name: "LEGO® Minecraft® Výprava do dolu", category: "hracky", price: 715, image: "https://www.junior.cz/files/images/product/350/lego-minecraft21269-vyprava-do-dolu-a-pasovec-9E6o.jpg", stock: 12 },
+    { id: 5, name: "LEGO® Speed Champions Ferrari", category: "hracky", price: 649, image: "https://www.junior.cz/files/images/product/350/lego-speed-champions-77242-zavodni-auto-ferrari-sf-24-f1-h0kp.jpg", stock: 8 },
+    { id: 6, name: "Látková panenka Lila", category: "hracky", price: 650, image: "https://www.junior.cz/files/images/product/350/latkova-panenka-daisy-ve-zlute-IokT.webp", stock: 19 },
+    { id: 7, name: "Lilliputiens - plyšový dráček Joe", category: "hracky", price: 2217, image: "https://www.junior.cz/files/images/product/350/lilliputiens---velky-plysovy-dracek-joe-R1ZG.jpg", stock: 5 },
+    { id: 8, name: "Lilliputiens - muchláček dráček", category: "hracky", price: 560, image: "https://www.junior.cz/files/images/product/350/lilliputiens---muchlacek----dracek-joe-KMF0.jpg", stock: 28 },
+    { id: 9, name: "Stela - svítící vyšívání", category: "knihy", price: 389, image: "https://www.junior.cz/files/images/product/350/stela---svitici-vysivani-OpOI.jpg", stock: 21 },
+    { id: 10, name: "Jedééém!", category: "knihy", price: 749, image: "https://www.junior.cz/files/images/product/350/jedeeem-gqdE.jpg", stock: 16 },
+    { id: 11, name: "Děti z Bullerbynu", category: "knihy", price: 380, image: "https://www.junior.cz/files/images/product/350/deti-z-bullerbynu---vyrocni-vydani-58jT.jpg", stock: 32 },
+    { id: 12, name: "O zzzvědavé včele Elle", category: "knihy", price: 849, image: "https://www.junior.cz/files/images/product/350/o-zzzvedave-vcele-elle-n4ar.jpg", stock: 11 },
+    { id: 13, name: "Artissimo - pískování Jednorožci", category: "tvoreni", price: 369, image: "https://www.junior.cz/files/images/product/350/artissimo---trpytkove-piskovani---jednorozci-hYXT.jpg", stock: 24 },
+    { id: 14, name: "Sada malování pískem – Pohádky", category: "tvoreni", price: 359, image: "https://www.junior.cz/files/images/product/350/sada-malovani-piskem--pohadky-Ah9P.jpg", stock: 31 },
+    { id: 15, name: "Žlutý křeček jedlíček", category: "tvoreni", price: 250, image: "https://www.junior.cz/files/images/product/350/zluty-krecek-jedlicek-imrk.jpg", stock: 17 },
+    { id: 16, name: "Čmáropis", category: "tvoreni", price: 199, image: "https://www.junior.cz/files/images/product/350/cmaropis-Wixh.jpg", stock: 55 }
 ];
 
 // ========================================
@@ -367,7 +371,7 @@ function renderProducts() {
 
     grid.innerHTML = products.map(product => `
     <div class="product-admin-card">
-      <div class="product-image">${product.image}</div>
+      <div class="product-image"><img src="${product.image}" alt="${product.name}" style="width:100%;height:100%;object-fit:contain;" onerror="this.outerHTML='<div style=\\'font-size:3rem;text-align:center\\'>🧸</div>'"></div>
       <h4>${product.name}</h4>
       <div class="price">${formatPrice(product.price)}</div>
       <div class="stock">Skladem: ${product.stock} ks</div>
