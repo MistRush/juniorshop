@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JuniorShop - Hračky pro děti</title>
+  <meta name="description"
+    content="Kvalitní hračky, knihy a doplňky pro děti všech věkových kategorií. Doprava zdarma nad 1500 Kč.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <!-- ========================================
+       HEADER
+       ======================================== -->
+  <header class="header">
+    <div class="header-top">
+      <div class="container">
+        <a href="#" class="logo" data-page="home">
+          <div class="logo-icon">🦔</div>
+          <div class="logo-text">Junior<span>.cz</span></div>
+        </a>
+
+        <div class="header-contact">
+          <a href="mailto:info@juniorshop.cz">
+            <span>📧</span> info@juniorshop.cz
+          </a>
+          <a href="tel:+420739377561">
+            <span>📞</span> +420 739 377 561
+          </a>
+        </div>
+
+        <div class="search-box">
+          <input type="text" placeholder="Zadejte hledaný výraz..." id="searchInput">
+          <button type="button" id="searchBtn">Hledat</button>
+        </div>
+
+        <div class="header-actions">
+          <a href="#" class="header-action" data-page="login">
+            <div class="header-action-icon">👤</div>
+            <div class="header-action-text">
+              <span>Přihlášení</span>
+            </div>
+          </a>
+
+          <a href="#" class="header-action" data-page="cart" id="cartIcon">
+            <div class="header-action-icon cart-badge" data-count="0">🛒</div>
+            <div class="cart-info">
+              <div class="label">Košík</div>
+              <div class="value" id="cartTotal">0 Kč</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <nav class="nav-main">
+      <div class="container">
+        <div class="nav-categories">
+          <a href="#" class="nav-category" data-category="hracky">
+            <span class="nav-category-icon">🧸</span>
+            <span>Hračky</span>
+          </a>
+          <a href="#" class="nav-category" data-category="tvoreni">
+            <span class="nav-category-icon">🎨</span>
+            <span>Tvoření</span>
+          </a>
+          <a href="#" class="nav-category" data-category="knihy">
+            <span class="nav-category-icon">📚</span>
+            <span>Knihy</span>
+          </a>
+          <a href="#" class="nav-category" data-category="dekorace">
+            <span class="nav-category-icon">🏠</span>
+            <span>Dekorace</span>
+          </a>
+          <a href="#" class="nav-category" data-category="doplnky">
+            <span class="nav-category-icon">🎒</span>
+            <span>Doplňky</span>
+          </a>
+          <a href="#" class="nav-category" data-category="sezonni">
+            <span class="nav-category-icon">🎄</span>
+            <span>Sezónní</span>
+          </a>
+        </div>
+
+        <div class="nav-links">
+          <a href="#" class="nav-link" data-page="about">O nás</a>
+          <a href="#" class="nav-link" data-page="blog">Blog</a>
+          <a href="#" class="nav-link" data-page="contact">Kontakt</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ========================================
+       HOMEPAGE
+       ======================================== -->
+  <main id="page-home" class="page active">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-filter">
+          <h2>Juniorův pokojík</h2>
+
+          <div class="filter-section">
+            <span class="filter-label">Komu chcete udělat radost?</span>
+            <div class="filter-options">
+              <div class="filter-option gender" data-gender="boy">
+                <span class="icon">👦</span>
+                <span>kluk</span>
+              </div>
+              <div class="filter-option gender" data-gender="girl">
+                <span class="icon">👧</span>
+                <span>holka</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="filter-section">
+            <span class="filter-label">Kolik má let?</span>
+            <div class="filter-options age-options">
+              <div class="filter-option" data-age="0-3">0-3</div>
+              <div class="filter-option" data-age="3-6">3-6</div>
+              <div class="filter-option" data-age="6-9">6-9</div>
+              <div class="filter-option" data-age="9-12">9-12</div>
+              <div class="filter-option" data-age="12+">12+</div>
+            </div>
+          </div>
+
+          <div class="filter-section">
+            <span class="filter-label">Do které kategorie chcete mrknout?</span>
+            <div class="filter-options category-options">
+              <div class="filter-option" data-cat="hracky">🧸 Hračky</div>
+              <div class="filter-option" data-cat="knihy">📚 Knihy</div>
+              <div class="filter-option" data-cat="dekorace">🏠 Dekorace</div>
+              <div class="filter-option" data-cat="tvoreni">🎨 Tvoření</div>
+              <div class="filter-option" data-cat="doplnky">🎒 Doplňky</div>
+            </div>
+          </div>
+
+          <button class="btn-filter" id="filterBtn">Zobrazit produkty</button>
+        </div>
+
+        <div class="hero-banner">
+          <h2>Zimní kouzlo pro nejmenší</h2>
+          <p>Objevte dekorace, které dělnou pokojíček svnivou atmosféru. Krásné motivy v příjemných barvách vydrží po
+            celou sezónu.</p>
+          <a href="#" class="btn btn-primary" data-category="sezonni">Přejít do kategorie →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- USP Section -->
+    <section class="usp-section">
+      <div class="container">
+        <div class="usp-grid">
+          <div class="usp-item">
+            <div class="usp-icon">✨</div>
+            <div class="usp-content">
+              <h4>Pečlivý výběr</h4>
+              <p>Vše, co nabízíme, vybíráme pro své děti. Každý produkt testujeme.</p>
+            </div>
+          </div>
+          <div class="usp-item">
+            <div class="usp-icon">✅</div>
+            <div class="usp-content">
+              <h4>Certifikované produkty</h4>
+              <p>Bezpečí u dětí. Všechny produkty mají potřebné certifikáty.</p>
+            </div>
+          </div>
+          <div class="usp-item">
+            <div class="usp-icon">🚚</div>
+            <div class="usp-content">
+              <h4>Doprava zdarma</h4>
+              <p>Při objednávce nad 1 500 Kč máte dopravu zdarma. A to je super.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="products-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Doporučujeme</h2>
+          <a href="#" class="section-link" data-category="hracky">Zobrazit vše →</a>
+        </div>
+
+        <div class="products-grid" id="featuredProducts">
+          <!-- Products loaded by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- New Products -->
+    <section class="products-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Novinky</h2>
+          <a href="#" class="section-link" data-category="hracky">Zobrazit vše →</a>
+        </div>
+
+        <div class="products-grid" id="newProducts">
+          <!-- Products loaded by JS -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================
+       CATEGORY PAGE
+       ======================================== -->
+  <main id="page-category" class="page">
+    <div class="page-header">
+      <div class="container">
+        <nav class="breadcrumb">
+          <a href="#" data-page="home">Domů</a>
+          <span class="breadcrumb-separator">/</span>
+          <span id="categoryBreadcrumb">Hračky</span>
+        </nav>
+        <h1 class="page-title" id="categoryTitle">Hračky</h1>
+      </div>
+    </div>
+
+    <section class="category-page">
+      <div class="container">
+        <div class="category-layout">
+          <aside class="category-sidebar">
+            <div class="sidebar-section">
+              <h4 class="sidebar-title">Cena</h4>
+              <div class="price-range">
+                <input type="range" class="price-slider" min="0" max="5000" value="5000" id="priceSlider">
+                <div class="price-inputs">
+                  <input type="number" value="0" id="priceMin">
+                  <span>–</span>
+                  <input type="number" value="5000" id="priceMax">
+                  <span>Kč</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="sidebar-section">
+              <h4 class="sidebar-title">Věk dítěte</h4>
+              <label class="filter-checkbox">
+                <input type="checkbox" value="0-3">
+                <span>0 - 3 roky</span>
+                <span class="count">(45)</span>
+              </label>
+              <label class="filter-checkbox">
+                <input type="checkbox" value="3-6">
+                <span>3 - 6 let</span>
+                <span class="count">(78)</span>
+              </label>
+              <label class="filter-checkbox">
+                <input type="checkbox" value="6-9">
+                <span>6 - 9 let</span>
+                <span class="count">(56)</span>
+              </label>
+              <label class="filter-checkbox">
+                <input type="checkbox" value="9-12">
+                <span>9 - 12 let</span>
+                <span class="count">(34)</span>
+              </label>
+              <label class="filter-checkbox">
+                <input type="checkbox" value="12+">
+                <span>12+ let</span>
+                <span class="count">(23)</span>
+              </label>
+            </div>
+
+            <div class="sidebar-section">
+              <h4 class="sidebar-title">Pohlaví</h4>
+              <label class="filter-checkbox">
+                <input type="checkbox" value="boy">
+                <span>Pro chlapce</span>
+                <span class="count">(89)</span>
+              </label>
+              <label class="filter-checkbox">
+                <input type="checkbox" value="girl">
+                <span>Pro dívky</span>
+                <span class="count">(76)</span>
+              </label>
+              <label class="filter-checkbox">
+                <input type="checkbox" value="unisex">
+                <span>Unisex</span>
+                <span class="count">(112)</span>
+              </label>
+            </div>
+
+            <div class="sidebar-section">
+              <h4 class="sidebar-title">Výrobce</h4>
+              <label class="filter-checkbox">
+                <input type="checkbox" value="bigjigs">
+                <span>Bigjigs Toys</span>
+                <span class="count">(34)</span>
+              </label>
+              <label class="filter-checkbox">
+                <input type="checkbox" value="djeco">
+                <span>Djeco</span>
+                <span class="count">(28)</span>
+              </label>
+              <label class="filter-checkbox">
+                <input type="checkbox" value="goki">
+                <span>Goki</span>
+                <span class="count">(45)</span>
+              </label>
+              <label class="filter-checkbox">
+                <input type="checkbox" value="hape">
+                <span>Hape</span>
+                <span class="count">(23)</span>
+              </label>
+            </div>
+          </aside>
+
+          <div class="category-content">
+            <div class="subcategory-grid" id="subcategoryGrid">
+              <!-- Subcategories loaded by JS -->
+            </div>
+
+            <div class="products-toolbar">
+              <span class="products-count" id="productsCount">Nalezeno 156 produktů</span>
+              <div class="products-sort">
+                <button class="sort-btn active" data-sort="bestseller">Bestsellery</button>
+                <button class="sort-btn" data-sort="az">Abecedně</button>
+                <button class="sort-btn" data-sort="price-asc">Od nejlevnějšího</button>
+                <button class="sort-btn" data-sort="price-desc">Od nejdražšího</button>
+              </div>
+            </div>
+
+            <div class="products-grid" id="categoryProducts">
+              <!-- Products loaded by JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================
+       PRODUCT DETAIL PAGE
+       ======================================== -->
+  <main id="page-product" class="page">
+    <div class="page-header">
+      <div class="container">
+        <nav class="breadcrumb">
+          <a href="#" data-page="home">Domů</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="#" data-category="hracky">Hračky</a>
+          <span class="breadcrumb-separator">/</span>
+          <span id="productBreadcrumb">Dřevěný vláček</span>
+        </nav>
+      </div>
+    </div>
+
+    <section class="product-detail-page">
+      <div class="container">
+        <div class="product-detail-layout">
+          <div class="product-gallery">
+            <div class="gallery-main">
+              <img src="" alt="" id="mainImage">
+            </div>
+            <div class="gallery-thumbs" id="galleryThumbs">
+              <!-- Thumbnails loaded by JS -->
+            </div>
+          </div>
+
+          <div class="product-info-detail">
+            <a href="#" class="product-category-link" data-category="hracky" id="productCategoryLink">Dřevěné hračky</a>
+            <h1 class="product-title" id="productTitle">Dřevěný vláček s vagónky</h1>
+
+            <div class="product-stock" id="productStock">
+              <span>✓</span> Skladem
+            </div>
+
+            <div class="product-price-detail">
+              <span class="price-current-detail" id="productPrice">599 Kč</span>
+              <span class="price-original-detail" id="productOriginalPrice"></span>
+            </div>
+
+            <p class="product-description" id="productDescription">
+              Krásný dřevěný vláček s barevnými vagónky je ideální hračka pro malé strojvůdce. Vyroben z kvalitního
+              dřeva, bezpečné barvy, vhodné pro děti od 3 let.
+            </p>
+
+            <div class="quantity-selector">
+              <span class="quantity-label">Množství:</span>
+              <div class="quantity-controls">
+                <button class="quantity-btn" id="quantityMinus">−</button>
+                <input type="number" class="quantity-input" value="1" min="1" id="quantityInput">
+                <button class="quantity-btn" id="quantityPlus">+</button>
+              </div>
+            </div>
+
+            <div class="product-actions-detail">
+              <button class="btn-add-cart-detail" id="addToCartDetail">
+                🛒 Přidat do košíku
+              </button>
+              <button class="btn-wishlist-detail" id="addToWishlist">
+                ♡
+              </button>
+            </div>
+
+            <div class="shipping-info">
+              <div class="shipping-progress">
+                <div class="shipping-progress-bar">
+                  <div class="shipping-progress-fill" id="shippingProgressFill" style="width: 40%"></div>
+                </div>
+              </div>
+              <p class="shipping-text">
+                Dokupte ještě za <strong id="shippingRemaining">901 Kč</strong> a máte dopravu zdarma!
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================
+       CART PAGE
+       ======================================== -->
+  <main id="page-cart" class="page">
+    <div class="page-header">
+      <div class="container">
+        <nav class="breadcrumb">
+          <a href="#" data-page="home">Domů</a>
+          <span class="breadcrumb-separator">/</span>
+          <span>Nákupní košík</span>
+        </nav>
+        <h1 class="page-title">Nákupní košík</h1>
+      </div>
+    </div>
+
+    <section class="cart-page">
+      <div class="container">
+        <div class="cart-layout">
+          <div class="cart-items" id="cartItems">
+            <div class="cart-header">
+              <h3>Položky v košíku (<span id="cartItemCount">0</span>)</h3>
+              <button class="btn-outline" id="clearCart">Vyprázdnit košík</button>
+            </div>
+
+            <!-- Cart items loaded by JS -->
+            <div id="cartItemsList"></div>
+
+            <div class="empty-state" id="emptyCart" style="display: none;">
+              <div class="empty-state-icon">🛒</div>
+              <h3>Váš košík je prázdný</h3>
+              <p>Zdá se, že jste si ještě nic nevybrali. Podívejte se na naše skvělé produkty!</p>
+              <a href="#" class="btn btn-primary" data-page="home">Pokračovat v nákupu</a>
+            </div>
+          </div>
+
+          <div class="cart-summary" id="cartSummary">
+            <h3>Shrnutí objednávky</h3>
+
+            <div class="summary-row">
+              <span>Mezisoučet</span>
+              <span id="subtotal">0 Kč</span>
+            </div>
+            <div class="summary-row">
+              <span>Doprava</span>
+              <span id="shippingCost">---</span>
+            </div>
+            <div class="summary-row total">
+              <span>Celkem</span>
+              <span class="value" id="totalPrice">0 Kč</span>
+            </div>
+
+            <form class="coupon-form" id="couponForm">
+              <input type="text" placeholder="Slevový kód" id="couponInput">
+              <button type="submit">Použít</button>
+            </form>
+
+            <div class="cart-shipping-info">
+              <div class="cart-shipping-progress">
+                <div class="cart-shipping-progress-fill" id="cartShippingProgress" style="width: 0%"></div>
+              </div>
+              <p class="cart-shipping-text" id="cartShippingText">
+                Dokupte ještě za 1 500 Kč a máte dopravu zdarma!
+              </p>
+            </div>
+
+            <button class="btn-checkout" id="checkoutBtn" data-page="checkout">
+              Pokračovat k objednávce →
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================
+       CHECKOUT PAGE
+       ======================================== -->
+  <main id="page-checkout" class="page">
+    <div class="page-header">
+      <div class="container">
+        <nav class="breadcrumb">
+          <a href="#" data-page="home">Domů</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="#" data-page="cart">Košík</a>
+          <span class="breadcrumb-separator">/</span>
+          <span>Pokladna</span>
+        </nav>
+        <h1 class="page-title">Dokončení objednávky</h1>
+      </div>
+    </div>
+
+    <section class="checkout-page">
+      <div class="container">
+        <div class="checkout-steps">
+          <div class="checkout-step completed" data-step="1">
+            <span class="step-number">1</span>
+            <span>Košík</span>
+          </div>
+          <div class="checkout-step active" data-step="2">
+            <span class="step-number">2</span>
+            <span>Doprava a platba</span>
+          </div>
+          <div class="checkout-step" data-step="3">
+            <span class="step-number">3</span>
+            <span>Údaje</span>
+          </div>
+          <div class="checkout-step" data-step="4">
+            <span class="step-number">4</span>
+            <span>Hotovo</span>
+          </div>
+        </div>
+
+        <div class="checkout-layout">
+          <div class="checkout-form">
+            <!-- Step 2: Shipping & Payment -->
+            <div id="checkoutStep2" class="checkout-step-content">
+              <div class="form-section">
+                <h3>Způsob dopravy</h3>
+                <div class="shipping-options">
+                  <label class="shipping-option selected">
+                    <input type="radio" name="shipping" value="zasilkovna" checked>
+                    <div class="shipping-option-info">
+                      <h4>📦 Zásilkovna</h4>
+                      <p>Vyzvedněte si zásilku na nejbližší výdejně</p>
+                    </div>
+                    <span class="shipping-option-price">69 Kč</span>
+                  </label>
+
+                  <label class="shipping-option">
+                    <input type="radio" name="shipping" value="ppl">
+                    <div class="shipping-option-info">
+                      <h4>🚚 PPL kurýr</h4>
+                      <p>Doručení přímo k vám domů</p>
+                    </div>
+                    <span class="shipping-option-price">99 Kč</span>
+                  </label>
+
+                  <label class="shipping-option">
+                    <input type="radio" name="shipping" value="posta">
+                    <div class="shipping-option-info">
+                      <h4>📮 Česká pošta</h4>
+                      <p>Balík do ruky nebo na poštu</p>
+                    </div>
+                    <span class="shipping-option-price">89 Kč</span>
+                  </label>
+
+                  <label class="shipping-option" id="freeShippingOption" style="display: none;">
+                    <input type="radio" name="shipping" value="free">
+                    <div class="shipping-option-info">
+                      <h4>🎁 Doprava zdarma</h4>
+                      <p>Objednávka nad 1 500 Kč</p>
+                    </div>
+                    <span class="shipping-option-price free">Zdarma</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-section">
+                <h3>Způsob platby</h3>
+                <div class="payment-options">
+                  <label class="payment-option selected">
+                    <input type="radio" name="payment" value="card" checked>
+                    <span class="payment-option-icon">💳</span>
+                    <span class="payment-option-name">Platební karta</span>
+                  </label>
+
+                  <label class="payment-option">
+                    <input type="radio" name="payment" value="transfer">
+                    <span class="payment-option-icon">🏦</span>
+                    <span class="payment-option-name">Bankovní převod</span>
+                  </label>
+
+                  <label class="payment-option">
+                    <input type="radio" name="payment" value="cod">
+                    <span class="payment-option-icon">💵</span>
+                    <span class="payment-option-name">Dobírka</span>
+                  </label>
+
+                  <label class="payment-option">
+                    <input type="radio" name="payment" value="applepay">
+                    <span class="payment-option-icon">🍎</span>
+                    <span class="payment-option-name">Apple Pay</span>
+                  </label>
+                </div>
+              </div>
+
+              <button class="btn btn-primary" id="toStep3">Pokračovat k údajům →</button>
+            </div>
+
+            <!-- Step 3: Personal Info -->
+            <div id="checkoutStep3" class="checkout-step-content hidden">
+              <div class="form-section">
+                <h3>Kontaktní údaje</h3>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="email">E-mail *</label>
+                    <input type="email" id="email" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="phone">Telefon *</label>
+                    <input type="tel" id="phone" required>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-section">
+                <h3>Doručovací adresa</h3>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="firstName">Jméno *</label>
+                    <input type="text" id="firstName" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="lastName">Příjmení *</label>
+                    <input type="text" id="lastName" required>
+                  </div>
+                </div>
+                <div class="form-row single">
+                  <div class="form-group">
+                    <label for="street">Ulice a číslo popisné *</label>
+                    <input type="text" id="street" required>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="city">Město *</label>
+                    <input type="text" id="city" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="zip">PSČ *</label>
+                    <input type="text" id="zip" required>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-section">
+                <h3>Poznámka k objednávce</h3>
+                <div class="form-row single">
+                  <div class="form-group">
+                    <textarea id="note" rows="3" placeholder="Máte nějaký speciální požadavek?"></textarea>
+                  </div>
+                </div>
+              </div>
+
+              <div style="display: flex; gap: 1rem;">
+                <button class="btn btn-outline" id="backToStep2">← Zpět</button>
+                <button class="btn btn-primary" id="submitOrder" style="flex: 1;">Dokončit objednávku</button>
+              </div>
+            </div>
+
+            <!-- Step 4: Confirmation -->
+            <div id="checkoutStep4" class="checkout-step-content hidden">
+              <div class="order-confirmation">
+                <div class="confirmation-icon">✓</div>
+                <h2>Děkujeme za vaši objednávku!</h2>
+                <p>Vaše objednávka byla úspěšně přijata. Na e-mail vám zašleme potvrzení s detaily.</p>
+                <div class="order-number">Číslo objednávky: <span id="orderNumber">#2024001234</span></div>
+                <a href="#" class="btn-continue" data-page="home">Pokračovat v nákupu</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="order-summary">
+            <h3>Vaše objednávka</h3>
+            <div class="order-items" id="orderItems">
+              <!-- Order items loaded by JS -->
+            </div>
+
+            <div class="summary-row">
+              <span>Mezisoučet</span>
+              <span id="checkoutSubtotal">0 Kč</span>
+            </div>
+            <div class="summary-row">
+              <span>Doprava</span>
+              <span id="checkoutShipping">69 Kč</span>
+            </div>
+            <div class="summary-row total">
+              <span>Celkem</span>
+              <span class="value" id="checkoutTotal">0 Kč</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================
+       FOOTER
+       ======================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-contact-item">
+          <span class="icon">📧</span>
+          <span>info@juniorshop.cz</span>
+        </div>
+        <div class="footer-contact-item">
+          <span class="icon">📞</span>
+          <span>+420 739 377 561</span>
+        </div>
+      </div>
+
+      <div class="footer-grid">
+        <div class="footer-column">
+          <h4>O nás</h4>
+          <ul>
+            <li>JuniorShop s.r.o.</li>
+            <li>IČ: 12345678</li>
+            <li>DIČ: CZ12345678</li>
+            <li style="margin-top: 1rem;">Účet: 123456789/0100</li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Kategorie</h4>
+          <ul>
+            <li><a href="#" data-category="hracky">Hračky</a></li>
+            <li><a href="#" data-category="tvoreni">Tvoření</a></li>
+            <li><a href="#" data-category="knihy">Knihy</a></li>
+            <li><a href="#" data-category="dekorace">Dekorace</a></li>
+            <li><a href="#" data-category="doplnky">Doplňky</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Pomoc</h4>
+          <ul>
+            <li><a href="#">Obchodní podmínky</a></li>
+            <li><a href="#">Reklamace a vrácení</a></li>
+            <li><a href="#">Doprava a platba</a></li>
+            <li><a href="#">Ochrana osobních údajů</a></li>
+            <li><a href="#">Často kladené otázky</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Sledujte nás</h4>
+          <div class="footer-social">
+            <a href="#" title="Facebook">📘</a>
+            <a href="#" title="Instagram">📷</a>
+            <a href="#" title="YouTube">🎬</a>
+          </div>
+
+          <h4 style="margin-top: 2rem;">Platební metody</h4>
+          <div class="payment-methods">
+            <span style="background: white; padding: 5px 10px; border-radius: 4px; font-size: 0.8rem;">VISA</span>
+            <span style="background: white; padding: 5px 10px; border-radius: 4px; font-size: 0.8rem;">MC</span>
+            <span style="background: white; padding: 5px 10px; border-radius: 4px; font-size: 0.8rem;">PayPal</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2024 JuniorShop.cz - Všechna práva vyhrazena | <a href="admin.html"
+            style="color: rgba(255,255,255,0.7);">🔐 Admin</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
+  <!-- Firebase Config -->
+  <script src="firebase-config.js"></script>
+
+  <!-- App JavaScript -->
+  <script src="app.js"></script>
+</body>
+
+</html>

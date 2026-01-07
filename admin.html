@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - JuniorShop</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Admin Styles -->
+    <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+    <!-- Login Screen -->
+    <div id="loginScreen" class="login-screen">
+        <div class="login-card">
+            <div class="login-header">
+                <div class="logo-icon">🦔</div>
+                <h1>JuniorShop Admin</h1>
+                <p>Přihlaste se pro přístup k administraci</p>
+            </div>
+
+            <form id="loginForm" class="login-form">
+                <div class="form-group">
+                    <label for="loginEmail">E-mail</label>
+                    <input type="email" id="loginEmail" placeholder="admin@juniorshop.cz" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Heslo</label>
+                    <input type="password" id="loginPassword" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn-login">Přihlásit se</button>
+                <p class="login-hint">Demo: admin@juniorshop.cz / admin123</p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div id="adminDashboard" class="admin-dashboard hidden">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <div class="logo-icon">🦔</div>
+                <span class="logo-text">Admin</span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-section="dashboard">
+                    <span class="nav-icon">📊</span>
+                    <span>Přehled</span>
+                </a>
+                <a href="#" class="nav-item" data-section="orders">
+                    <span class="nav-icon">📦</span>
+                    <span>Objednávky</span>
+                    <span class="nav-badge" id="ordersBadge">0</span>
+                </a>
+                <a href="#" class="nav-item" data-section="products">
+                    <span class="nav-icon">🧸</span>
+                    <span>Produkty</span>
+                </a>
+                <a href="#" class="nav-item" data-section="settings">
+                    <span class="nav-icon">⚙️</span>
+                    <span>Nastavení</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <a href="index.html" class="nav-item">
+                    <span class="nav-icon">🏪</span>
+                    <span>Zpět do obchodu</span>
+                </a>
+                <button class="nav-item" id="logoutBtn">
+                    <span class="nav-icon">🚪</span>
+                    <span>Odhlásit se</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <header class="admin-header">
+                <h1 id="pageTitle">Přehled</h1>
+                <div class="header-actions">
+                    <span class="user-info">👤 Admin</span>
+                </div>
+            </header>
+
+            <!-- Dashboard Section -->
+            <section id="section-dashboard" class="admin-section active">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">📦</div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="totalOrders">0</div>
+                            <div class="stat-label">Celkem objednávek</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⏳</div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="pendingOrders">0</div>
+                            <div class="stat-label">Čekající</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">💰</div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="totalRevenue">0 Kč</div>
+                            <div class="stat-label">Celkový obrat</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🧸</div>
+                        <div class="stat-content">
+                            <div class="stat-value" id="totalProducts">12</div>
+                            <div class="stat-label">Produktů</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-card">
+                    <h2>Poslední objednávky</h2>
+                    <div id="recentOrders" class="orders-list">
+                        <p class="empty-state">Zatím žádné objednávky</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Orders Section -->
+            <section id="section-orders" class="admin-section">
+                <div class="section-header">
+                    <h2>Všechny objednávky</h2>
+                    <div class="filters">
+                        <select id="orderStatusFilter">
+                            <option value="">Všechny stavy</option>
+                            <option value="pending">Čekající</option>
+                            <option value="processing">Zpracovává se</option>
+                            <option value="shipped">Odesláno</option>
+                            <option value="delivered">Doručeno</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="orders-table-container">
+                    <table class="orders-table">
+                        <thead>
+                            <tr>
+                                <th>Číslo</th>
+                                <th>Zákazník</th>
+                                <th>Položky</th>
+                                <th>Celkem</th>
+                                <th>Stav</th>
+                                <th>Datum</th>
+                                <th>Akce</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ordersTableBody">
+                            <tr>
+                                <td colspan="7" class="empty-state">Zatím žádné objednávky</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Products Section -->
+            <section id="section-products" class="admin-section">
+                <div class="section-header">
+                    <h2>Správa produktů</h2>
+                    <button class="btn-primary" id="addProductBtn">+ Přidat produkt</button>
+                </div>
+
+                <div class="products-grid" id="adminProductsGrid">
+                    <!-- Products loaded by JS -->
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section id="section-settings" class="admin-section">
+                <div class="section-card">
+                    <h2>Firebase nastavení</h2>
+                    <p class="info-text">Pro plnou funkčnost nastavte správné Firebase credentials v souboru
+                        <code>firebase-config.js</code>.</p>
+
+                    <div class="settings-form">
+                        <div class="form-group">
+                            <label>Stav Firebase:</label>
+                            <span id="firebaseStatus" class="status-badge">Kontroluji...</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-card">
+                    <h2>Lokální data</h2>
+                    <p class="info-text">Objednávky uložené lokálně (když Firebase není dostupný):</p>
+                    <div id="localOrdersCount">0 objednávek</div>
+                    <button class="btn-secondary" id="viewLocalOrders">Zobrazit lokální objednávky</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Order Detail Modal -->
+    <div id="orderModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Detail objednávky <span id="modalOrderNumber">#123456</span></h2>
+                <button class="modal-close" id="closeModal">×</button>
+            </div>
+            <div class="modal-body" id="orderModalBody">
+                <!-- Order details loaded by JS -->
+            </div>
+            <div class="modal-footer">
+                <select id="orderStatusSelect">
+                    <option value="pending">Čekající</option>
+                    <option value="processing">Zpracovává se</option>
+                    <option value="shipped">Odesláno</option>
+                    <option value="delivered">Doručeno</option>
+                </select>
+                <button class="btn-primary" id="updateOrderStatus">Aktualizovat stav</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
+    <!-- Firebase Config -->
+    <script src="firebase-config.js"></script>
+
+    <!-- Admin JavaScript -->
+    <script src="admin.js"></script>
+</body>
+
+</html>
