@@ -950,10 +950,14 @@ async function completeOrder() {
     note: note || null
   };
 
-  // Try to save to Firebase
+  // Try to save to Firebase with timeout
   try {
     if (typeof saveOrder === 'function' && typeof db !== 'undefined') {
-      await saveOrder(orderData);
+      // Wrap in timeout to prevent hanging
+      const timeoutPromise = new Promise((_, reject) =>
+        setTimeout(() => reject(new Error('Firebase timeout')), 3000)
+      );
+      await Promise.race([saveOrder(orderData), timeoutPromise]);
       console.log('✅ Order saved to Firebase:', orderNum);
     } else {
       console.log('ℹ️ Firebase not configured, order stored locally only');
@@ -963,7 +967,7 @@ async function completeOrder() {
       localStorage.setItem('juniorshop_orders', JSON.stringify(localOrders));
     }
   } catch (error) {
-    console.error('❌ Error saving order:', error);
+    console.warn('⚠️ Firebase save failed, using localStorage:', error.message);
     // Store in localStorage as backup
     const localOrders = JSON.parse(localStorage.getItem('juniorshop_orders') || '[]');
     localOrders.push({ ...orderData, createdAt: new Date().toISOString() });
