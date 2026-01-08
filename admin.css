@@ -697,6 +697,85 @@ button {
 }
 
 /* ========================================
+   PRODUCT EDIT FORM
+   ======================================== */
+.modal-body .form-group {
+    margin-bottom: var(--space-md);
+}
+
+.modal-body label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: var(--space-xs);
+    color: var(--admin-text);
+}
+
+.modal-body input,
+.modal-body select,
+.modal-body textarea {
+    width: 100%;
+    padding: var(--space-sm) var(--space-md);
+    background: var(--admin-bg);
+    border: 2px solid var(--admin-border);
+    border-radius: var(--radius-md);
+    color: var(--admin-text);
+    font-size: 0.95rem;
+    font-family: inherit;
+}
+
+.modal-body input:focus,
+.modal-body select:focus,
+.modal-body textarea:focus {
+    outline: none;
+    border-color: var(--admin-primary);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+}
+
+.image-preview {
+    margin-top: var(--space-sm);
+    background: var(--admin-bg);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    text-align: center;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-preview img {
+    max-width: 100%;
+    max-height: 150px;
+    object-fit: contain;
+    border-radius: var(--radius-sm);
+}
+
+.image-preview .placeholder {
+    color: var(--admin-text-muted);
+    font-size: 0.9rem;
+}
+
+/* Product image in admin card */
+.product-admin-card .product-image {
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.product-admin-card .product-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* ========================================
    RESPONSIVE
    ======================================== */
 @media (max-width: 768px) {
@@ -714,5 +793,9 @@ button {
 
     .order-row {
         grid-template-columns: 1fr 1fr;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
     }
 }

@@ -185,7 +185,8 @@
                 <div class="section-card">
                     <h2>Firebase nastavení</h2>
                     <p class="info-text">Pro plnou funkčnost nastavte správné Firebase credentials v souboru
-                        <code>firebase-config.js</code>.</p>
+                        <code>firebase-config.js</code>.
+                    </p>
 
                     <div class="settings-form">
                         <div class="form-group">
@@ -223,6 +224,96 @@
                     <option value="delivered">Doručeno</option>
                 </select>
                 <button class="btn-primary" id="updateOrderStatus">Aktualizovat stav</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Edit Modal -->
+    <div id="productModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><span id="productModalTitle">Upravit produkt</span></h2>
+                <button class="modal-close" id="closeProductModal">×</button>
+            </div>
+            <div class="modal-body">
+                <form id="productEditForm">
+                    <input type="hidden" id="editProductId">
+
+                    <div class="form-group">
+                        <label for="editProductName">Název produktu</label>
+                        <input type="text" id="editProductName" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="editProductPrice">Cena (Kč)</label>
+                            <input type="number" id="editProductPrice" min="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editProductOriginalPrice">Původní cena (Kč)</label>
+                            <input type="number" id="editProductOriginalPrice" min="0" placeholder="Volitelné">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="editProductCategory">Kategorie</label>
+                            <select id="editProductCategory" required>
+                                <option value="hracky">Hračky</option>
+                                <option value="knihy">Knihy</option>
+                                <option value="tvoreni">Tvoření</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="editProductStock">Skladem (ks)</label>
+                            <input type="number" id="editProductStock" min="0" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="editProductAge">Věk</label>
+                            <select id="editProductAge">
+                                <option value="0-3">0-3 roky</option>
+                                <option value="3-6">3-6 let</option>
+                                <option value="6-9">6-9 let</option>
+                                <option value="9-12">9-12 let</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="editProductGender">Pohlaví</label>
+                            <select id="editProductGender">
+                                <option value="unisex">Unisex</option>
+                                <option value="boy">Chlapci</option>
+                                <option value="girl">Dívky</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editProductImage">URL obrázku</label>
+                        <input type="url" id="editProductImage" placeholder="https://...">
+                        <div id="imagePreview" class="image-preview"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editProductDescription">Popis</label>
+                        <textarea id="editProductDescription" rows="3"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editProductBadge">Štítek</label>
+                        <select id="editProductBadge">
+                            <option value="">Žádný</option>
+                            <option value="new">Novinka</option>
+                            <option value="sale">Sleva</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" id="cancelProductEdit">Zrušit</button>
+                <button class="btn-primary" id="saveProductBtn">Uložit změny</button>
             </div>
         </div>
     </div>

@@ -387,15 +387,120 @@ function renderProducts() {
 }
 
 function editProduct(id) {
-    showNotification('Úprava produktů bude brzy dostupná');
+    const product = products.find(p => p.id === id);
+    if (!product) return;
+
+    // Set modal title
+    document.getElementById('productModalTitle').textContent = 'Upravit produkt';
+
+    // Fill form with product data
+    document.getElementById('editProductId').value = product.id;
+    document.getElementById('editProductName').value = product.name || '';
+    document.getElementById('editProductPrice').value = product.price || 0;
+    document.getElementById('editProductOriginalPrice').value = product.originalPrice || '';
+    document.getElementById('editProductCategory').value = product.category || 'hracky';
+    document.getElementById('editProductStock').value = product.stock || 0;
+    document.getElementById('editProductAge').value = product.age || '3-6';
+    document.getElementById('editProductGender').value = product.gender || 'unisex';
+    document.getElementById('editProductImage').value = product.image || '';
+    document.getElementById('editProductDescription').value = product.description || '';
+    document.getElementById('editProductBadge').value = product.badge || '';
+
+    // Update image preview
+    updateImagePreview(product.image);
+
+    // Show modal
+    document.getElementById('productModal').classList.remove('hidden');
+}
+
+function updateImagePreview(url) {
+    const preview = document.getElementById('imagePreview');
+    if (url && url.startsWith('http')) {
+        preview.innerHTML = `<img src="${url}" alt="Náhled" onerror="this.outerHTML='<span class=\\'placeholder\\'>Obrázek nelze načíst</span>'">`;
+    } else {
+        preview.innerHTML = '<span class="placeholder">Zadejte URL obrázku</span>';
+    }
+}
+
+function saveProduct() {
+    const id = parseInt(document.getElementById('editProductId').value);
+    const productIndex = products.findIndex(p => p.id === id);
+
+    if (productIndex === -1 && id) {
+        showNotification('Produkt nenalezen', 'error');
+        return;
+    }
+
+    const productData = {
+        id: id || Date.now(),
+        name: document.getElementById('editProductName').value,
+        price: parseInt(document.getElementById('editProductPrice').value) || 0,
+        originalPrice: parseInt(document.getElementById('editProductOriginalPrice').value) || null,
+        category: document.getElementById('editProductCategory').value,
+        stock: parseInt(document.getElementById('editProductStock').value) || 0,
+        age: document.getElementById('editProductAge').value,
+        gender: document.getElementById('editProductGender').value,
+        image: document.getElementById('editProductImage').value,
+        description: document.getElementById('editProductDescription').value,
+        badge: document.getElementById('editProductBadge').value || null
+    };
+
+    if (productIndex !== -1) {
+        // Update existing
+        products[productIndex] = productData;
+        showNotification('Produkt byl upraven!');
+    } else {
+        // Add new
+        products.push(productData);
+        showNotification('Produkt byl přidán!');
+    }
+
+    // Save to localStorage
+    localStorage.setItem('juniorshop_products', JSON.stringify(products));
+
+    // Close modal and refresh
+    closeProductModal();
+    renderProducts();
 }
 
 function deleteProduct(id) {
-    showNotification('Mazání produktů bude brzy dostupné');
+    if (!confirm('Opravdu chcete smazat tento produkt?')) return;
+
+    const index = products.findIndex(p => p.id === id);
+    if (index !== -1) {
+        products.splice(index, 1);
+        localStorage.setItem('juniorshop_products', JSON.stringify(products));
+        renderProducts();
+        showNotification('Produkt byl smazán!');
+    }
 }
 
 function addProduct() {
-    showNotification('Přidání produktů bude brzy dostupné');
+    // Set modal title
+    document.getElementById('productModalTitle').textContent = 'Přidat nový produkt';
+
+    // Clear form
+    document.getElementById('editProductId').value = '';
+    document.getElementById('editProductName').value = '';
+    document.getElementById('editProductPrice').value = '';
+    document.getElementById('editProductOriginalPrice').value = '';
+    document.getElementById('editProductCategory').value = 'hracky';
+    document.getElementById('editProductStock').value = '';
+    document.getElementById('editProductAge').value = '3-6';
+    document.getElementById('editProductGender').value = 'unisex';
+    document.getElementById('editProductImage').value = '';
+    document.getElementById('editProductDescription').value = '';
+    document.getElementById('editProductBadge').value = '';
+
+    // Clear preview
+    updateImagePreview('');
+
+    // Show modal
+    document.getElementById('productModal').classList.remove('hidden');
+}
+
+function closeProductModal() {
+    document.getElementById('productModal').classList.add('hidden');
 }
 
 // ========================================
@@ -509,6 +614,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Add product
     document.getElementById('addProductBtn').addEventListener('click', addProduct);
+
+    // Product modal events
+    document.getElementById('closeProductModal').addEventListener('click', closeProductModal);
+    document.getElementById('cancelProductEdit').addEventListener('click', closeProductModal);
+    document.getElementById('saveProductBtn').addEventListener('click', saveProduct);
+    document.getElementById('productModal').addEventListener('click', (e) => {
+        if (e.target.id === 'productModal') closeProductModal();
+    });
+
+    // Image preview update on URL change
+    document.getElementById('editProductImage').addEventListener('input', (e) => {
+        updateImagePreview(e.target.value);
+    });
 
     // View local orders
     document.getElementById('viewLocalOrders').addEventListener('click', viewLocalOrders);
